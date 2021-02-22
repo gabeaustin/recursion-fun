@@ -1,15 +1,19 @@
-const countDown = (num) => {
+const countDown = (num, callback) => {
     setTimeout(() => {
 
         if(num > 0) {
             console.log(num);
-            countDown(num - 1);
+            countDown(num - 1, callback);
         } else {
-            console.log("Done!");
+            callback();
         }
 
     }, 1000);
-
 };
 
-countDown(5);
+const isDone = () => {
+    console.log("Done Ya Rings");
+}
+
+countDown(5, isDone); 
+// if put parenthesis, like this: isDone(), it invockes the function immediately
